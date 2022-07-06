@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>audio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+  </head>
+  <body>
+   
+
+
+<div class="col-3 mx-5">
+<label for="customRange1" class="form-label">volume</label>
+<input type="range" class="form-range" id="vol" min="0" max="1"     >
+</div>
+
+<div class="col-3 mx-5">
+<label for="customRange1" class="form-label">rate</label>
+<input type="range" class="form-range" id="rate" min="0.1" max="10"     >
+</div>
+
+
+<div class="col-3 mx-5">
+<label for="customRange1" class="form-label">pitch</label>
+<input type="range" class="form-range" id="pitch" min="0" max="2"     >
+</div>
+
+
+
+
+<div class="col-6 mx-5">
+<div class="input-group">
+ 
+  <textarea class="form-control" aria-label="With textarea" id="textare" ></textarea>
+</div>
+</div>
+
+
+<div class="col-6 px-4 mt-4">
+
+
+<div class="row gx-4">
+<div class="col my-2">
+ <button class="btn btn-success" id="start">start</button>
+
+</div>
+
+<div class="col my-2">
+ <button class="btn btn-warning"id="pause" >pause</button>
+
+</div>
+
+<div class="col my-2">
+ <button class="btn btn-primary"id="resume">resume</button>
+
+</div>
+
+<div class="col my-2" >
+ <button class="btn btn-danger" id="cancel">cancel</button>
+
+</div>
+
+</div>
+</div>
+
+    <script >
+   //range   
+let vol=document.getElementById("vol")
+let rate=document.getElementById("rate");
+let pitch=document.getElementById("pitch");
+//btns
+let stbtn=document.getElementById("start");
+let paubtn=document.getElementById("pause");
+let resbtn=document.getElementById("resume");
+let cancbtn=document.getElementById("cancel");
+
+
+
+let speech = new SpeechSynthesisUtterance();
+
+
+
+speech.lang = "en";
+
+stbtn.addEventListener('click',()=>{
+
+let textare=document.getElementById("textare").value;
+
+speech.text=textare
+
+  window.speechSynthesis.speak(speech);})
+
+
+
+paubtn.addEventListener('click',()=>{
+
+
+   window.speechSynthesis.pause();
+});
+
+
+resbtn.addEventListener('click',()=>{
+
+
+   window.speechSynthesis.pause();
+});
+
+
+cancbtn.addEventListener('click',()=>{
+
+
+   window.speechSynthesis.cancel();
+});
+
+
+
+vol.addEventListener('input',()=>{
+
+let vol1=document.getElementById("vol").value;
+
+speech.volume=vol1
+
+
+})
+
+
+rate.addEventListener('input',()=>{
+
+let rate1=document.getElementById("rate").value;
+
+speech.rate=rate1
+
+
+})
+
+pitch.addEventListener('input',()=>{
+
+let pitch1=document.getElementById("pitch").value;
+
+speech.pitch=pitch1
+console.log(speech.pitch)
+
+})
+
+
+
+
+
+
+
+
+    </script>
+  </body>
+</html>
+https://www.section.io/engineering-education/text-to-speech-in-javascript/
